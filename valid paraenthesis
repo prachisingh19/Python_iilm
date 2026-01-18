@@ -1,0 +1,17 @@
+def is_valid_parentheses(s):
+    stack = []
+    match = {')': '(', '}': '{', ']': '['}
+
+    for char in s:
+        if char in match.values():
+            stack.append(char)
+        elif char in match:
+            if not stack or stack[-1] != match[char]:
+                return False
+            stack.pop()
+
+    return not stack
+print(is_valid_parentheses("()"))          
+print(is_valid_parentheses("()[]{}"))      
+print(is_valid_parentheses("(]"))          
+print(is_valid_parentheses("([)]"))        
